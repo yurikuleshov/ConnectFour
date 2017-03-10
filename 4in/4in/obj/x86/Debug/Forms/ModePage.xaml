@@ -1,0 +1,44 @@
+﻿<Page
+    x:Class="yk.ConnectFour.Forms.ModeSelector"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:utils="using:yk.ConnectFour.Utils"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Page.Resources>
+        <utils:CounterPartyToBoolConverter x:Key="EnumToBoolConverter" />
+    </Page.Resources>
+
+    <Grid>
+        <Grid.ChildrenTransitions>
+            <TransitionCollection>
+                <EntranceThemeTransition />
+            </TransitionCollection>
+        </Grid.ChildrenTransitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <!-- Title Panel -->
+        <StackPanel Grid.Row="0" Margin="19,0,0,0.167">
+            <TextBlock Text="Connect Four" Style="{ThemeResource TitleTextBlockStyle}" Margin="0,12,0,0" />
+            <TextBlock Text="Select mode" Margin="0,-6.5,0,26.5" Style="{ThemeResource HeaderTextBlockStyle}"
+                       CharacterSpacing="{ThemeResource PivotHeaderItemCharacterSpacing}" />
+        </StackPanel>
+
+        <StackPanel Orientation="Vertical" Grid.Row="1" Grid.ColumnSpan="2" Margin="19">
+            <RadioButton Content="Man vs. man" x:Name="Man"
+                         IsChecked="{Binding Path=Mode, Converter={StaticResource EnumToBoolConverter}, ConverterParameter=Human, Mode=TwoWay}" />
+            <RadioButton Content="Man vs. machine" x:Name="Machine"
+                         IsChecked="{Binding Path=Mode, Converter={StaticResource EnumToBoolConverter}, ConverterParameter=Robot, Mode=TwoWay}" />
+
+            <Button x:ConnectionId='1' Content="Begin" HorizontalAlignment="Center" Margin="64"                            />
+        </StackPanel>
+
+    </Grid>
+</Page>
+

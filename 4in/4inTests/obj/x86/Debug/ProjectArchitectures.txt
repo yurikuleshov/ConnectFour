@@ -1,0 +1,2 @@
+d:\hr\4inarow\4in\4in\4in.csproj;x86
+d:\hr\4inarow\4in\4inTests\4inTests.csproj;x86
